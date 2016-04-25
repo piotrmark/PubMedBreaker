@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DescriptorRecordSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="DescriptorRecord" />
+      </xs:sequence>
+      <xs:attribute name="LanguageCode" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="cze" />
+            <xs:enumeration value="dut" />
+            <xs:enumeration value="eng" />
+            <xs:enumeration value="fin" />
+            <xs:enumeration value="fre" />
+            <xs:enumeration value="ger" />
+            <xs:enumeration value="ita" />
+            <xs:enumeration value="jpn" />
+            <xs:enumeration value="lav" />
+            <xs:enumeration value="por" />
+            <xs:enumeration value="scr" />
+            <xs:enumeration value="slv" />
+            <xs:enumeration value="spa" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescriptorRecord">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="DescriptorUI" />
+          <xs:element ref="DescriptorName" />
+        </xs:sequence>
+        <xs:element ref="DateCreated" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="DateRevised" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="DateEstablished" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="AllowableQualifiersList" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="Annotation" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="HistoryNote" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="NLMClassificationNumber" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="OnlineNote" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="PublicMeSHNote" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="PreviousIndexingList" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="EntryCombinationList" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="SeeRelatedList" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="ConsiderAlso" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="PharmacologicalActionList" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="TreeNumberList" />
+        <xs:element ref="ConceptList" />
+      </xs:sequence>
+      <xs:attribute default="1" name="DescriptorClass">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="1" />
+            <xs:enumeration value="2" />
+            <xs:enumeration value="3" />
+            <xs:enumeration value="4" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllowableQualifiersList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="AllowableQualifier" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllowableQualifier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="QualifierReferredTo" />
+        <xs:element ref="Abbreviation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Annotation" type="xs:string" />
+  <xs:element name="ConsiderAlso" type="xs:string" />
+  <xs:element name="Day" type="xs:string" />
+  <xs:element name="DescriptorUI" type="xs:string" />
+  <xs:element name="DescriptorName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="String" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateCreated">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="Year" />
+          <xs:element ref="Month" />
+          <xs:element ref="Day" />
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateRevised">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="Year" />
+          <xs:element ref="Month" />
+          <xs:element ref="Day" />
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateEstablished">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="Year" />
+          <xs:element ref="Month" />
+          <xs:element ref="Day" />
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescriptorReferredTo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="DescriptorUI" />
+          <xs:element ref="DescriptorName" />
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EntryCombinationList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="EntryCombination" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EntryCombination">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ECIN" />
+        <xs:element ref="ECOUT" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ECIN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DescriptorReferredTo" />
+        <xs:element ref="QualifierReferredTo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ECOUT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DescriptorReferredTo" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="QualifierReferredTo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HistoryNote" type="xs:string" />
+  <xs:element name="Month" type="xs:string" />
+  <xs:element name="NLMClassificationNumber" type="xs:string" />
+  <xs:element name="OnlineNote" type="xs:string" />
+  <xs:element name="PublicMeSHNote" type="xs:string" />
+  <xs:element name="PreviousIndexingList">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="PreviousIndexing" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PreviousIndexing" type="xs:string" />
+  <xs:element name="QualifierReferredTo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="QualifierUI" />
+          <xs:element ref="QualifierName" />
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QualifierUI" type="xs:string" />
+  <xs:element name="QualifierName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="String" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Year" type="xs:string" />
+  <xs:element name="SeeRelatedList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="SeeRelatedDescriptor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SeeRelatedDescriptor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DescriptorReferredTo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TreeNumberList">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="TreeNumber" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TreeNumber" type="xs:string" />
+  <xs:element name="ConceptList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="Concept" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Concept">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="ConceptUI" />
+          <xs:element ref="ConceptName" />
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" ref="CASN1Name" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="RegistryNumber" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="ScopeNote" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="TranslatorsEnglishScopeNote" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="TranslatorsScopeNote" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="RelatedRegistryNumberList" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="ConceptRelationList" />
+        <xs:element ref="TermList" />
+      </xs:sequence>
+      <xs:attribute name="PreferredConceptYN" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="Y" />
+            <xs:enumeration value="N" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConceptUI" type="xs:string" />
+  <xs:element name="ConceptName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="String" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConceptRelationList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="ConceptRelation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConceptRelation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Concept1UI" />
+        <xs:element ref="Concept2UI" />
+      </xs:sequence>
+      <xs:attribute name="RelationName">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="NRW" />
+            <xs:enumeration value="BRD" />
+            <xs:enumeration value="REL" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Concept1UI" type="xs:string" />
+  <xs:element name="Concept2UI" type="xs:string" />
+  <xs:element name="CASN1Name" type="xs:string" />
+  <xs:element name="PharmacologicalActionList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="PharmacologicalAction" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PharmacologicalAction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DescriptorReferredTo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistryNumber" type="xs:string" />
+  <xs:element name="RelatedRegistryNumberList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="RelatedRegistryNumber" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RelatedRegistryNumber" type="xs:string" />
+  <xs:element name="ScopeNote" type="xs:string" />
+  <xs:element name="TranslatorsEnglishScopeNote" type="xs:string" />
+  <xs:element name="TranslatorsScopeNote" type="xs:string" />
+  <xs:element name="TermList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="Term" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Term">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence>
+          <xs:element ref="TermUI" />
+          <xs:element ref="String" />
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" ref="DateCreated" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="Abbreviation" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="SortVersion" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="EntryVersion" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="ThesaurusIDlist" />
+        <xs:element minOccurs="0" maxOccurs="1" ref="TermNote" />
+      </xs:sequence>
+      <xs:attribute name="ConceptPreferredTermYN" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="Y" />
+            <xs:enumeration value="N" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="IsPermutedTermYN" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="Y" />
+            <xs:enumeration value="N" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="LexicalTag" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="ABB" />
+            <xs:enumeration value="ABX" />
+            <xs:enumeration value="ACR" />
+            <xs:enumeration value="ACX" />
+            <xs:enumeration value="EPO" />
+            <xs:enumeration value="LAB" />
+            <xs:enumeration value="NAM" />
+            <xs:enumeration value="NON" />
+            <xs:enumeration value="TRD" />
+            <xs:enumeration value="Frelex" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="RecordPreferredTermYN" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="Y" />
+            <xs:enumeration value="N" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TermUI" type="xs:string" />
+  <xs:element name="String" type="xs:string" />
+  <xs:element name="Abbreviation" type="xs:string" />
+  <xs:element name="SortVersion" type="xs:string" />
+  <xs:element name="EntryVersion" type="xs:string" />
+  <xs:element name="ThesaurusIDlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="ThesaurusID" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ThesaurusID" type="xs:string" />
+  <xs:element name="TermNote" type="xs:string" />
+</xs:schema>
