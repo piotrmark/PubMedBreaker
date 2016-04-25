@@ -15,17 +15,22 @@ namespace PubMedBreaker
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private async void button_Click(object sender, RoutedEventArgs e)
         {
             string userQuery = textBoxQuery.Text;
+            int resultsNumber = 0;
+            if (integerUpDownResultNumber.Value != null)
+            {
+                resultsNumber = integerUpDownResultNumber.Value.Value;
+            }
 
-            List<UserQueryResult> results = UserQueryHandler.GetResultsForQuery(userQuery);
+            List<UserQueryResult> results = await UserQueryHandler.GetResultsForQuery(userQuery, resultsNumber);
 
             textBoxResults.Text = String.Empty;
 
             foreach (var res in results)
             {
-                textBoxResults.Text += (res.ArticleTitle + "\n");
+                textBoxResults.Text += (res.ArticleTitle + "\n" + "\n");
             }
         }
     }

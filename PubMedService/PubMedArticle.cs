@@ -7,9 +7,9 @@ namespace PubMedService
         public string Title { get; set; }
         public string Abstract { get; set; }
 
-        public PubMedArticle()
+        public PubMedArticle(string title)
         {
-            Title = "Test";
+            Title = title;
         }
     }
 }
