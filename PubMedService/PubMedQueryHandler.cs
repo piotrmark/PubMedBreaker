@@ -21,7 +21,6 @@ namespace PubMedService
             
             IDatabaseSearchExecutor databaseSearchExecutor = new DatabaseSearchExecutor();
             var searchResults = await databaseSearchExecutor.ExecuteSearchAsync(searchProperties);
-            var count = searchResults.Count;
 
             foreach (var searchResult in searchResults)
             {
