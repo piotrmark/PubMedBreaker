@@ -7,9 +7,10 @@ namespace PubMedService
         public PubMedArticle Article { get; private set; }
         public int PubMedIndex { get; set; }
 
-        public PubMedQueryResult()
+        public PubMedQueryResult(PubMedArticle article, int pubMedIndex)
         {
-            Article = new PubMedArticle();
+            Article = article;
+            PubMedIndex = pubMedIndex;
         }
     }
 }

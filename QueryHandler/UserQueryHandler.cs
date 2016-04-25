@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using PubMedService;
 
 namespace QueryHandler
 {
     public static class UserQueryHandler
     {
-        public static List<UserQueryResult> GetResultsForQuery(string query)
+        public static async Task<List<UserQueryResult>> GetResultsForQuery(string query, int resultsNumber)
         {
-            List<PubMedQueryResult> pmResults = PubMedQueryHandler.GetResultsForPubMedQuery(query);
+            List<PubMedQueryResult> pmResults = await PubMedQueryHandler.GetResultsForPubMedQueryAsync(query, resultsNumber);
 
             List<UserQueryResult> result = new List<UserQueryResult>();
 

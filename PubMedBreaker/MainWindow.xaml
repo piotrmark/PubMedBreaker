@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PubMedBreaker"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TextBox x:Name="textBoxQuery" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497"/>
-        <Button x:Name="button" Content="Szukaj" HorizontalAlignment="Left" Margin="432,37,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <TextBox x:Name="textBoxResults" HorizontalAlignment="Left" Height="230" Margin="10,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" IsEnabled="False"/>
-
+        <TextBox x:Name="TextBoxQuery" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497"/>
+        <Button x:Name="Button" Content="Szukaj" HorizontalAlignment="Left" Margin="432,44,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <TextBox x:Name="TextBoxResults" HorizontalAlignment="Left" Height="230" Margin="10,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+        <xctk:IntegerUpDown Name="IntegerUpDownResultNumber" Value="5" Margin="117,40,344,251" />
+        <Label x:Name="Label" Content="Liczba wyników&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
