@@ -6,11 +6,11 @@ using System.Xml.Serialization;
 
 namespace MeSHService.Xml
 {
-    public class XmlMeshReader
+    public static class XmlMeshReader
     {
         const string MeshDictionaryFilename = "desc2016.xml";
 
-        public DescriptorRecordSet Read()
+        public static DescriptorRecordSet Read()
         {
             string filePath = Path.Combine(PathHelper.GetProjectDirectoryPath(), MeshDictionaryFilename);
             FileStream readStrem = new FileStream(filePath, FileMode.Open);

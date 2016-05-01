@@ -56,8 +56,8 @@ public partial class DescriptorRecordSet {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class DescriptorRecord {
     
     private string descriptorUIField;
@@ -305,8 +305,8 @@ public partial class DescriptorRecord {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class DescriptorName {
     
     private string stringField;
@@ -327,8 +327,8 @@ public partial class DescriptorName {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class DateCreated {
     
     private string yearField;
@@ -373,8 +373,8 @@ public partial class DateCreated {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class DateRevised {
     
     private string yearField;
@@ -419,8 +419,8 @@ public partial class DateRevised {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class DateEstablished {
     
     private string yearField;
@@ -465,8 +465,8 @@ public partial class DateEstablished {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class AllowableQualifier {
     
     private QualifierReferredTo qualifierReferredToField;
@@ -499,8 +499,8 @@ public partial class AllowableQualifier {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class QualifierReferredTo {
     
     private string qualifierUIField;
@@ -533,8 +533,8 @@ public partial class QualifierReferredTo {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class QualifierName {
     
     private string stringField;
@@ -555,8 +555,8 @@ public partial class QualifierName {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class PreviousIndexingList {
     
     private string[] previousIndexingField;
@@ -578,8 +578,8 @@ public partial class PreviousIndexingList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class EntryCombination {
     
     private ECIN eCINField;
@@ -612,8 +612,8 @@ public partial class EntryCombination {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class ECIN {
     
     private DescriptorReferredTo descriptorReferredToField;
@@ -646,8 +646,8 @@ public partial class ECIN {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class DescriptorReferredTo {
     
     private string descriptorUIField;
@@ -680,8 +680,8 @@ public partial class DescriptorReferredTo {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class ECOUT {
     
     private DescriptorReferredTo descriptorReferredToField;
@@ -714,8 +714,8 @@ public partial class ECOUT {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class SeeRelatedDescriptor {
     
     private DescriptorReferredTo descriptorReferredToField;
@@ -736,8 +736,8 @@ public partial class SeeRelatedDescriptor {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class PharmacologicalAction {
     
     private DescriptorReferredTo descriptorReferredToField;
@@ -758,8 +758,8 @@ public partial class PharmacologicalAction {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class TreeNumberList {
     
     private string[] treeNumberField;
@@ -781,8 +781,8 @@ public partial class TreeNumberList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class Concept {
     
     private string conceptUIField;
@@ -927,8 +927,8 @@ public partial class Concept {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class ConceptName {
     
     private string stringField;
@@ -949,8 +949,8 @@ public partial class ConceptName {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class ConceptRelation {
     
     private string concept1UIField;
@@ -1007,7 +1007,7 @@ public partial class ConceptRelation {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum ConceptRelationRelationName {
     
     /// <uwagi/>
@@ -1025,8 +1025,8 @@ public enum ConceptRelationRelationName {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class Term {
     
     private string termUIField;
@@ -1182,7 +1182,7 @@ public partial class Term {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum TermConceptPreferredTermYN {
     
     /// <uwagi/>
@@ -1195,7 +1195,7 @@ public enum TermConceptPreferredTermYN {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum TermIsPermutedTermYN {
     
     /// <uwagi/>
@@ -1208,7 +1208,7 @@ public enum TermIsPermutedTermYN {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum TermLexicalTag {
     
     /// <uwagi/>
@@ -1245,7 +1245,7 @@ public enum TermLexicalTag {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum TermRecordPreferredTermYN {
     
     /// <uwagi/>
@@ -1258,7 +1258,7 @@ public enum TermRecordPreferredTermYN {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum ConceptPreferredConceptYN {
     
     /// <uwagi/>
@@ -1271,7 +1271,7 @@ public enum ConceptPreferredConceptYN {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum DescriptorRecordDescriptorClass {
     
     /// <uwagi/>
@@ -1294,7 +1294,7 @@ public enum DescriptorRecordDescriptorClass {
 /// <uwagi/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public enum DescriptorRecordSetLanguageCode {
     
     /// <uwagi/>
@@ -1342,8 +1342,8 @@ public enum DescriptorRecordSetLanguageCode {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class AllowableQualifiersList {
     
     private AllowableQualifier[] allowableQualifierField;
@@ -1365,8 +1365,8 @@ public partial class AllowableQualifiersList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class EntryCombinationList {
     
     private EntryCombination[] entryCombinationField;
@@ -1388,8 +1388,8 @@ public partial class EntryCombinationList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class SeeRelatedList {
     
     private SeeRelatedDescriptor[] seeRelatedDescriptorField;
@@ -1411,8 +1411,8 @@ public partial class SeeRelatedList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class ConceptList {
     
     private Concept[] conceptField;
@@ -1434,8 +1434,8 @@ public partial class ConceptList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class ConceptRelationList {
     
     private ConceptRelation[] conceptRelationField;
@@ -1457,8 +1457,8 @@ public partial class ConceptRelationList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class PharmacologicalActionList {
     
     private PharmacologicalAction[] pharmacologicalActionField;
@@ -1480,8 +1480,8 @@ public partial class PharmacologicalActionList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class RelatedRegistryNumberList {
     
     private string[] relatedRegistryNumberField;
@@ -1503,8 +1503,8 @@ public partial class RelatedRegistryNumberList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class TermList {
     
     private Term[] termField;
@@ -1526,8 +1526,8 @@ public partial class TermList {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://tempuri.org/nlmdescriptorrecordset_20160101", IsNullable=false)]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
+[System.Xml.Serialization.XmlRootAttribute(IsNullable=false)]
 public partial class ThesaurusIDlist {
     
     private string[] thesaurusIDField;

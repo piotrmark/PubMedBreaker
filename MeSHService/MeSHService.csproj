@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\MeshTreeBuilder.cs" />
+    <Compile Include="Model\MeshDescriptor.cs" />
+    <Compile Include="Model\MeshDictionary.cs" />
+    <Compile Include="Model\MeshTreeItem.cs" />
+    <Compile Include="Builders\MeshDictionaryBuilder.cs" />
+    <Compile Include="Service\MeshService.cs" />
     <Compile Include="Xml\PathHelper.cs" />
     <Compile Include="Xml\XmlMeshReader.cs" />
     <Compile Include="Xml\nlmdescriptorrecordset.cs">
