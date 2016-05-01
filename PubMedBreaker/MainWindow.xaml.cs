@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Windows;
 using QueryHandler;
+using MeSHService.Xml;
+using MeSHService;
+using MeSHService.Model;
 
 namespace PubMedBreaker
 {
@@ -13,6 +16,10 @@ namespace PubMedBreaker
         public MainWindow()
         {
             InitializeComponent();
+            var xmlRes = XmlMeshReader.Read();
+            MeshDictionaryBuilder builder = new MeshDictionaryBuilder();
+            MeshDictionary meshModel = builder.Build(xmlRes);
+
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)

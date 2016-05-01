@@ -130,6 +130,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MeSHService\MeSHService.csproj">
+      <Project>{8279afdc-c34d-4313-8bea-62aafaa6c51a}</Project>
+      <Name>MeSHService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QueryHandler\QueryHandler.csproj">
       <Project>{c1806751-725f-4047-b466-115739ef5200}</Project>
       <Name>QueryHandler</Name>
