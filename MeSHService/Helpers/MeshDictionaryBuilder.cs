@@ -11,12 +11,12 @@ namespace MeSHService
     /// Builds MeSH dictionary from xml auto-generated classes objects
     /// </summary>
     public class MeshDictionaryBuilder
-    {
+    { 
         private MeshDictionary _dictionary;
 
-        public MeshDictionary Build(DescriptorRecordSet xmlTree)
+        public MeshDictionary Build(DescriptorRecordSet xmlTree, MeshDictionary.TermUnifier termStemmingAlgorithm)
         {
-            _dictionary = new MeshDictionary();
+            _dictionary = new MeshDictionary(termStemmingAlgorithm);
 
             foreach (DescriptorRecord descriptor in xmlTree.DescriptorRecord)
                 ProcessXmlDescriptor(descriptor);

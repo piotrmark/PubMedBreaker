@@ -8,9 +8,17 @@ namespace MeSHService.Model
 {
     public class MeshDictionary
     {
+        public delegate string TermUnifier(string term);
+        private TermUnifier Unify;
+
         private IDictionary<string, MeshDescriptor> _descriptorsByNumbers = new Dictionary<string, MeshDescriptor>();
         private IDictionary<string, MeshDescriptor> _descriptorsByTerms = new Dictionary<string, MeshDescriptor>();
         
+
+        public MeshDictionary(TermUnifier unifyingFunc)
+        {
+            Unify = unifyingFunc;
+        }
         
         public IDictionary<string, MeshDescriptor> DescriptorsByNumbers
         {
@@ -40,7 +48,11 @@ namespace MeSHService.Model
         private void AddToTermsDict(MeshDescriptor newDesc)
         {
             foreach (string term in newDesc.Terms)
-                _descriptorsByTerms.Add(term, newDesc);
+            {
+                string key = Unify(term);
+                if(!_descriptorsByTerms.ContainsKey(key))
+                    _descriptorsByTerms.Add(key, newDesc);
+            }
         }
 
         private void AddToNumbersDict(MeshDescriptor newDesc)
