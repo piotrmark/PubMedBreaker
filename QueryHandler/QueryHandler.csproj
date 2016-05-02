@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\QueryProcessor.cs" />
+    <Compile Include="FinalResultsSet.cs" />
+    <Compile Include="RankingHelper.cs" />
     <Compile Include="UserQueryHandler.cs" />
     <Compile Include="UserQueryResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
