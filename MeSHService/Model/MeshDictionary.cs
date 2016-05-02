@@ -12,8 +12,15 @@ namespace MeSHService.Model
         private TermUnifier Unify;
 
         private IDictionary<string, MeshDescriptor> _descriptorsByNumbers = new Dictionary<string, MeshDescriptor>();
+
         private IDictionary<string, MeshDescriptor> _descriptorsByTerms = new Dictionary<string, MeshDescriptor>();
-        
+
+        private IDictionary<string, MeshDescriptor> _descriptorsByOneWordTerms = new Dictionary<string, MeshDescriptor>();
+        private IDictionary<string, MeshDescriptor> _descriptorsByTwoWordTerms = new Dictionary<string, MeshDescriptor>();
+        private IDictionary<string, MeshDescriptor> _descriptorsByThreeWordTerms = new Dictionary<string, MeshDescriptor>();
+        private IDictionary<string, MeshDescriptor> _descriptorsByFourWordTerms = new Dictionary<string, MeshDescriptor>();
+        private IDictionary<string, MeshDescriptor> _descriptorsByFiveWordTerms = new Dictionary<string, MeshDescriptor>();
+
 
         public MeshDictionary(TermUnifier unifyingFunc)
         {
@@ -47,11 +54,24 @@ namespace MeSHService.Model
 
         private void AddToTermsDict(MeshDescriptor newDesc)
         {
-            foreach (string term in newDesc.Terms)
+            foreach (string term in newDesc.Terms.Select(t => t.TextValue))
             {
                 string key = Unify(term);
-                if(!_descriptorsByTerms.ContainsKey(key))
+                int wordsCount = key.Split().Length;
+                if (!_descriptorsByTerms.ContainsKey(key))
+                {
                     _descriptorsByTerms.Add(key, newDesc);
+
+                    switch(wordsCount)
+                    {
+                        case 1: _descriptorsByOneWordTerms.Add(key, newDesc); break;
+                        case 2: _descriptorsByTwoWordTerms.Add(key, newDesc); break;
+                        case 3: _descriptorsByThreeWordTerms.Add(key, newDesc); break;
+                        case 4: _descriptorsByFourWordTerms.Add(key, newDesc); break;
+                        case 5: _descriptorsByFiveWordTerms.Add(key, newDesc); break;
+                        default: break;
+                    }
+                }
             }
         }
 
@@ -60,8 +80,6 @@ namespace MeSHService.Model
             foreach (string treeNum in newDesc.TreeIds)
                 _descriptorsByNumbers.Add(treeNum, newDesc);
         }
-
-        
 
         #endregion
 

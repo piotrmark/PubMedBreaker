@@ -43,6 +43,7 @@
     <Compile Include="Helpers\MeshTreeBuilder.cs" />
     <Compile Include="Model\MeshDescriptor.cs" />
     <Compile Include="Model\MeshDictionary.cs" />
+    <Compile Include="Model\MeshTerm.cs" />
     <Compile Include="Model\MeshTreeItem.cs" />
     <Compile Include="Helpers\MeshDictionaryBuilder.cs" />
     <Compile Include="Service\MeshService.cs" />

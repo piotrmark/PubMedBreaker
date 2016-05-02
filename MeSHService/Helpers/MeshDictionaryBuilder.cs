@@ -39,10 +39,18 @@ namespace MeSHService
             {
                 foreach(Concept concept in record.ConceptList)
                 {
-                    if(concept.TermList != null)
+                    if (concept.TermList != null)
                     {
-                        foreach(Term term in concept.TermList)
-                            desc.Terms.Add(term.String);
+                        foreach (Term term in concept.TermList)
+                        {
+                            var termModel = new MeshTerm
+                            {
+                                TextValue = term.String,
+                                IsPermutedTerm = term.IsPermutedTermYN == TermIsPermutedTermYN.Y
+                            };
+
+                            desc.Terms.Add(termModel);
+                        }
                     }
                 }
             }

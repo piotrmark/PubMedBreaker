@@ -9,7 +9,7 @@ namespace MeSHService.Model
     public class MeshDescriptor
     {
         private IList<string> _treeIds = new List<string>();
-        private IList<string> _terms = new List<string>();
+        private IList<MeshTerm> _terms = new List<MeshTerm>();
 
         public string Name { get; set; }
 
@@ -18,7 +18,7 @@ namespace MeSHService.Model
             get { return _treeIds; }
         }
         
-        public IList<string> Terms
+        public IList<MeshTerm> Terms
         {
             get { return _terms; }
         }
