@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static MeSHService.Helpers.StringExtensions;
 
 namespace MeSHService.Service
 {
@@ -15,7 +16,7 @@ namespace MeSHService.Service
     {
         MeshDictionary _dictionary;
         
-        public MeshService(MeshDictionary.TermUnifier unifyingAlgorithm)
+        public MeshService(StringTransformation unifyingAlgorithm)
         {
             var dictBuilder = new MeshDictionaryBuilder();
             DescriptorRecordSet xmlResult = XmlMeshReader.Read();
@@ -39,6 +40,11 @@ namespace MeSHService.Service
 
             return matchingDescriptor != null
                 ? matchingDescriptor.Terms
+                    .Where(t =>
+                        !t.IsPermutedTerm)
+                    .Select(t =>
+                        t.TextValue)
+                    .ToList()
                 : new List<string> { unifiedTerm };
         }
     }

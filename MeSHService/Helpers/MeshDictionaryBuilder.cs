@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static MeSHService.Helpers.StringExtensions;
 
 namespace MeSHService
 {
@@ -14,7 +15,7 @@ namespace MeSHService
     { 
         private MeshDictionary _dictionary;
 
-        public MeshDictionary Build(DescriptorRecordSet xmlTree, MeshDictionary.TermUnifier termStemmingAlgorithm)
+        public MeshDictionary Build(DescriptorRecordSet xmlTree, StringTransformation termStemmingAlgorithm)
         {
             _dictionary = new MeshDictionary(termStemmingAlgorithm);
 

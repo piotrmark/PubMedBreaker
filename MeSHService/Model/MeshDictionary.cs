@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static MeSHService.Helpers.StringExtensions;
 
 namespace MeSHService.Model
 {
     public class MeshDictionary
     {
-        public delegate string TermUnifier(string term);
-        private TermUnifier Unify;
+        /// <summary>
+        /// Method creating unified form of words in string (expected normalization and stemming)
+        /// </summary>
+        private StringTransformation Unify;
 
         private IDictionary<string, MeshDescriptor> _descriptorsByNumbers = new Dictionary<string, MeshDescriptor>();
 
@@ -22,7 +25,7 @@ namespace MeSHService.Model
         private IDictionary<string, MeshDescriptor> _descriptorsByFiveWordTerms = new Dictionary<string, MeshDescriptor>();
 
 
-        public MeshDictionary(TermUnifier unifyingFunc)
+        public MeshDictionary(StringTransformation unifyingFunc)
         {
             Unify = unifyingFunc;
         }
