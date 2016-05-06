@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\QueryProcessor.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="UserQueryHandler.cs" />
     <Compile Include="UserQueryResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

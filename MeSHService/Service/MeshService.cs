@@ -23,29 +23,42 @@ namespace MeSHService.Service
             _dictionary = dictBuilder.Build(xmlResult, unifyingAlgorithm);
         }
 
-        public IList<string> GetSynonyms(string unifiedTerm)
+        public IList<string> GetSynonyms(string unifiedWord)
         {
             MeshDescriptor matchingDescriptor = null;
 
-            if (_dictionary.DescriptorsByTerms.ContainsKey(unifiedTerm))
+            if (_dictionary.DescriptorsByTerms.ContainsKey(unifiedWord))
             {
-                matchingDescriptor = _dictionary.DescriptorsByTerms[unifiedTerm];
+                matchingDescriptor = _dictionary.DescriptorsByTerms[unifiedWord];
             }
             else
             {
                 matchingDescriptor = _dictionary.DescriptorsByTerms.FirstOrDefault(
                     desc =>
-                        desc.Key.Contains(unifiedTerm)).Value;
+                        desc.Key.Contains(unifiedWord)).Value;
             }
 
             return matchingDescriptor != null
                 ? matchingDescriptor.Terms
-                    .Where(t =>
-                        !t.IsPermutedTerm)
-                    .Select(t =>
-                        t.TextValue)
+                    .Where(t => !t.IsPermutedTerm)
+                    .Select(t => t.TextValue)
                     .ToList()
-                : new List<string> { unifiedTerm };
+                : new List<string> { unifiedWord };
+        }
+
+        public IList<string> GetExactSynonyms(string unifiedString)
+        {
+            MeshDescriptor matchingItem;
+
+            if (_dictionary.MatchWithExactTerm(unifiedString, out matchingItem))
+            {
+                return matchingItem.Terms
+                    .Where(term => !term.IsPermutedTerm)
+                    .Select(term => term.TextValue)
+                    .ToList();
+            }
+
+            return new List<string>();
         }
     }
 }
