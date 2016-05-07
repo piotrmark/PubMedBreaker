@@ -4,16 +4,14 @@ using PubMedService;
 using MeSHService.Service;
 using System.Diagnostics;
 using System.Linq;
+using QueryHandler.TextUnifiers;
 
 namespace QueryHandler
 {
     public class UserQueryHandler
     {
-        private MeshService meshService = new MeshService(MockUnifier);
-        private static string MockUnifier(string term)
-        {
-            return term.ToLower();
-        }
+        private readonly MeshService _meshService = new MeshService(Normalization.Normalize);
+        
         public async Task<FinalResultsSet> GetResultsForQuery(string query, int resultsNumber, int timeout)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -21,18 +19,20 @@ namespace QueryHandler
             List<string> terms = new List<string>();
             Dictionary<string, List<string>> termsSynonyms = new Dictionary<string, List<string>>();
             Dictionary<string, List<PubMedQueryResult>> termsResults = new Dictionary<string, List<PubMedQueryResult>>();
-            Dictionary<string, List<PubMedQueryResult>> synonymsResults = new Dictionary<string, List<PubMedQueryResult>>();
+            Dictionary<string, List<PubMedQueryResult>> synonymsResults =
+                new Dictionary<string, List<PubMedQueryResult>>();
 
-            List<PubMedQueryResult> wholeQueryResults =
-                    await PubMedQueryHandler.GetResultsForPubMedQueryAsync(query, resultsNumber);
+            /*List<PubMedQueryResult> wholeQueryResults =
+                    await PubMedQueryHandler.GetResultsForPubMedQueryAsync(query, resultsNumber);*/
 
             terms.Add(query);   //TODO: W tym miejscu powinniśmy wyciągać listę termów z MeSHa
+
             foreach (var term in terms)
             {
                 List<PubMedQueryResult> termResults =
                     await PubMedQueryHandler.GetResultsForPubMedQueryAsync(term, resultsNumber);
                 termsResults.Add(term, termResults);
-                IList<string> synonyms = meshService.GetSynonyms(term);
+                IList<string> synonyms = _meshService.GetSynonyms(term);
                 termsSynonyms.Add(term, synonyms.ToList());
             }
 
@@ -40,8 +40,7 @@ namespace QueryHandler
 
             bool isTimeOut = false;
 
-            FinalResultsSet frs = new FinalResultsSet();
-            frs.SynonymsCount = maxSynonymsNumber;
+            FinalResultsSet frs = new FinalResultsSet {SynonymsCount = maxSynonymsNumber};
 
             for (int synonymIndex = 0; synonymIndex < maxSynonymsNumber; synonymIndex++)
             {
