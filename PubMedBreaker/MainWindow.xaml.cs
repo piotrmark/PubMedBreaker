@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using QueryHandler;
 
@@ -10,7 +9,7 @@ namespace PubMedBreaker
     /// </summary>
     public partial class MainWindow
     {
-        private UserQueryHandler uqh = new UserQueryHandler();
+        private readonly UserQueryHandler _uqh = new UserQueryHandler();
         public MainWindow()
         {
             InitializeComponent();
@@ -19,29 +18,39 @@ namespace PubMedBreaker
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             Button.IsEnabled = false;
-            string userQuery = TextBoxQuery.Text;
-            int resultsNumber = 0;
-            if (IntegerUpDownResultNumber.Value != null)
+            try
             {
-                resultsNumber = IntegerUpDownResultNumber.Value.Value;
-            }
+                string userQuery = TextBoxQuery.Text;
+                int resultsNumber = 0;
+                if (IntegerUpDownResultNumber.Value != null)
+                {
+                    resultsNumber = IntegerUpDownResultNumber.Value.Value;
+                }
 
-            int timeout = 0;
-            if (IntegerUpDownTimeout.Value != null)
+                int timeout = 0;
+                if (IntegerUpDownTimeout.Value != null)
+                {
+                    timeout = IntegerUpDownTimeout.Value.Value;
+                }
+
+                FinalResultsSet results = await _uqh.GetResultsForQuery(userQuery, resultsNumber, timeout);
+
+                TextBoxResults.Text = String.Empty;
+
+                foreach (var res in results.UserQueryResults)
+                {
+                    TextBoxResults.Text += (res.ArticleTitle + "\n" + "\n");
+                }
+                statusLabel.Content =
+                    $"Wykonano zapytania w: {results.ExecutionTimeMilis} ms, przetworzono {results.ProcesedSynonymsCount} z {results.SynonymsCount} synonimów";
+            }
+            catch (Exception exc)
             {
-                timeout = IntegerUpDownTimeout.Value.Value;
+                TextBoxResults.Text = exc.Message;
             }
-
-            FinalResultsSet results = await uqh.GetResultsForQuery(userQuery, resultsNumber, timeout);
-
-            TextBoxResults.Text = String.Empty;
-
-            foreach (var res in results.UserQueryResults)
-            {
-                TextBoxResults.Text += (res.ArticleTitle + "\n" + "\n");
-            }
-            statusLabel.Content = String.Format("Wykonano zapytania w: {0} ms, przetworzono {1} z {2} synonimów", results.ExecutionTimeMilis, results.ProcesedSynonymsCount, results.SynonymsCount);
             Button.IsEnabled = true;
+            
+            
         }
     }
 }

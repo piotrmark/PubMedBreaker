@@ -10,7 +10,7 @@ namespace QueryHandler
 {
     public class UserQueryHandler
     {
-        private readonly MeshService _meshService = new MeshService(Normalization.Normalize);
+        private readonly MeshService _meshService = new MeshService(Unification.Unify);
         
         public async Task<FinalResultsSet> GetResultsForQuery(string query, int resultsNumber, int timeout)
         {

@@ -45,6 +45,10 @@
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="RankingHelper.cs" />
     <Compile Include="TextUnifiers\Normalization.cs" />
+    <Compile Include="TextUnifiers\Stemmers\SnowballStemmer.cs" />
+    <Compile Include="TextUnifiers\Stemmers\StemmerHelper.cs" />
+    <Compile Include="TextUnifiers\Stemming.cs" />
+    <Compile Include="TextUnifiers\Unification.cs" />
     <Compile Include="UserQueryHandler.cs" />
     <Compile Include="UserQueryResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
