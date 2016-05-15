@@ -35,18 +35,16 @@ namespace PubMedBreaker
 
                 FinalResultsSet results = await _uqh.GetResultsForQuery(userQuery, resultsNumber, timeout);
 
-                TextBoxResults.Text = String.Empty;
+                TextBoxUnifiedQuery.Text = results.UnifiedQuery;
 
-                foreach (var res in results.UserQueryResults)
-                {
-                    TextBoxResults.Text += (res.ArticleTitle + "\n" + "\n");
-                }
-                statusLabel.Content =
+                ListViewResults.ItemsSource = results.UserQueryResults;
+
+                StatusLabel.Content =
                     $"Wykonano zapytania w: {results.ExecutionTimeMilis} ms, przetworzono {results.ProcesedSynonymsCount} z {results.SynonymsCount} synonimów";
             }
             catch (Exception exc)
             {
-                TextBoxResults.Text = exc.Message;
+                StatusLabel.Content = exc.Message;
             }
             Button.IsEnabled = true;
             

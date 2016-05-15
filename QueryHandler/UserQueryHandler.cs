@@ -42,6 +42,8 @@ namespace QueryHandler
 
             FinalResultsSet frs = new FinalResultsSet {SynonymsCount = maxSynonymsNumber};
 
+            frs.UnifiedQuery = Unification.Unify(query);
+
             for (int synonymIndex = 0; synonymIndex < maxSynonymsNumber; synonymIndex++)
             {
                 if (isTimeOut)

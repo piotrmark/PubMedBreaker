@@ -12,5 +12,6 @@ namespace QueryHandler
         public long ExecutionTimeMilis { get; set; }
         public int SynonymsCount { get; set; }
         public int ProcesedSynonymsCount { get; set; }
+        public string UnifiedQuery { get; set; }
     }
 }
