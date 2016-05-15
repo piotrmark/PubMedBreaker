@@ -48,6 +48,7 @@
     <Compile Include="TextUnifiers\Stemmers\SnowballStemmer.cs" />
     <Compile Include="TextUnifiers\Stemmers\StemmerHelper.cs" />
     <Compile Include="TextUnifiers\Stemming.cs" />
+    <Compile Include="TextUnifiers\StopWords.cs" />
     <Compile Include="TextUnifiers\Unification.cs" />
     <Compile Include="UserQueryHandler.cs" />
     <Compile Include="UserQueryResult.cs" />
@@ -63,7 +64,11 @@
       <Name>PubMedService</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="StopWords.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
