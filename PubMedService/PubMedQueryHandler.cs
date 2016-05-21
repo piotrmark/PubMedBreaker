@@ -6,7 +6,7 @@ using PubMed.Model.Search.Terms;
 using PubMed.Model.Summaries;
 using PubMed.Search.Search;
 using PubMed.Search.Summary;
-
+using PubMedService.PubMedQueryBuilder;
 
 namespace PubMedService
 {
@@ -14,10 +14,11 @@ namespace PubMedService
     {
         private static readonly EntrezDatabase EntrezDatabase = new EntrezDatabase(PubMedConsts.PubMedDatabaseName);
 
-        public static async Task<List<PubMedQueryResult>> GetResultsForPubMedQueryAsync(string query, int resultsNumber)
+        public static async Task<List<PubMedQueryResult>> GetResultsForPubMedQueryAsync(
+            IPubMedQueryBuilder searchBuilder)
         {
             var result = new List<PubMedQueryResult>();
-            var searchProperties = BuildSearchProperties(query, resultsNumber);
+            var searchProperties = searchBuilder.BuildSearch(EntrezDatabase);
             
             IDatabaseSearchExecutor databaseSearchExecutor = new DatabaseSearchExecutor();
             var searchResults = await databaseSearchExecutor.ExecuteSearchAsync(searchProperties);
@@ -31,26 +32,8 @@ namespace PubMedService
                             searchResult.PubMedID));
                 result.Add(new PubMedQueryResult(new PubMedArticle(summary.Title), searchResults.IndexOf(searchResult)));
             }
+
             return result;
-
-        }
-
-        private static SearchProperties BuildSearchProperties(string query, int resultsNumber)
-        {
-            var searchProperties = new SearchProperties
-            {
-                Database = EntrezDatabase,
-                MaximumResults = resultsNumber,
-                BaseSearchTermGroup = BuildSearch(query)
-            };
-            return searchProperties;
-        }
-
-        private static SearchTermGroup BuildSearch(string query)
-        {
-            var baseGroup = new SearchTermGroup();
-            baseGroup.AddTerm<AllFieldsTerm>(query, LinkTypes.AND);
-            return baseGroup;
         }
     }
 }

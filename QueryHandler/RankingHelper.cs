@@ -9,7 +9,7 @@ namespace QueryHandler
 {
     public static class RankingHelper
     {
-        public static int GetRankingForResult(PubMedQueryResult pmqr, string term, Dictionary<string, List<PubMedQueryResult>> allResults)
+        public static int GetRankingForResult(PubMedQueryResult pmqr, List<PubMedQueryResult> allResults)
         {
             return 0;
         }

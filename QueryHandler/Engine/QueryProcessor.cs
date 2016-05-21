@@ -1,4 +1,7 @@
 ﻿using MeSHService.Service;
+using PubMedService.PubMedQueryBuilder;
+using PubMedService.PubMedService.PubMedQueryBuilder;
+using QueryHandler.TextUnifiers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,47 @@ namespace QueryHandler.Engine
 {
     public class QueryProcessor
     {
-        MeshService service;
-
-        StringTransformation unifyCase = (string source) => { return source.ToLower(); };
+        private MeshService service;
+        private StringTransformation unifyTerm = (string source) => { return Unification.Unify(source); };
+        private int maxResultsCount = 10;
 
         public QueryProcessor()
         {
-            service = new MeshService(unifyCase);
+            service = new MeshService(unifyTerm);
         }
 
-        public List<string> GetQueriesToSend(string userQuery)
+        public IList<IPubMedQueryBuilder> GetQueriesToSend(string userQuery, int maxResultsCount)
         {
-            return new List<string> { GetSynonymBasedQuery(userQuery) };
+            return new List<IPubMedQueryBuilder>
+            {
+                GetOriginalQueryBuilder(userQuery),
+                GetSynonymBasedQueryBuilder(userQuery),
+                GetAllSynonymsQueryBuilder(userQuery)
+            };
         }
 
-        private string GetSynonymBasedQuery(string userQuery)
+        private IPubMedQueryBuilder GetOriginalQueryBuilder(string userQuery)
         {
-            //TODO: Construct query from list of phrases with matching synonyms
-            return string.Empty;
+            return new SimpleConjunctionQueryBuilder(userQuery.Split().ToList(), maxResultsCount);
+        }
+
+
+        private IPubMedQueryBuilder GetSynonymBasedQueryBuilder(string userQuery)
+        {
+            List<Tuple<string, IList<string>>> termsWithSynonyms = ReplaceWithSynonyms(userQuery);
+            List<IList<string>> synonymsList = termsWithSynonyms.Select(t => t.Item2).ToList();
+            return new SynonymousQueryBuilder(synonymsList, maxResultsCount);
+        }
+
+        private IPubMedQueryBuilder GetAllSynonymsQueryBuilder(string userQuery)
+        {
+            List<Tuple<string, IList<string>>> termsWithSynonyms = ReplaceWithSynonyms(userQuery);
+
+            IList<string> allSynonymsTogether = new List<string>();
+            foreach (IList<string> synonyms in termsWithSynonyms.Select(t => t.Item2))
+                allSynonymsTogether = allSynonymsTogether.Concat(synonyms).ToList();
+
+            return new SimpleAlternativeQueryBuilder(allSynonymsTogether, maxResultsCount);
         }
 
         private List<Tuple<string, IList<string>>> ReplaceWithSynonyms(string userQuery)
@@ -39,7 +65,7 @@ namespace QueryHandler.Engine
             {
                 for (int i = 0; i + termLength <= words.Count; i++)
                 {
-                    string currentlyChecked = unifyCase(words.JoinRange(i, termLength));
+                    string currentlyChecked = unifyTerm(words.JoinRange(i, termLength));
                     IList<string> synonyms = service.GetExactSynonyms(currentlyChecked);
                     if(synonyms.Any())
                     {
