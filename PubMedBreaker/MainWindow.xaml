@@ -5,24 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="446.581" Width="525">
+        Title="MainWindow" Height="446.581" Width="877.868">
     <Grid>
         <TextBox x:Name="TextBoxQuery" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497"/>
         <Button x:Name="Button" Content="Szukaj" HorizontalAlignment="Left" Margin="432,44,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <xctk:IntegerUpDown Name="IntegerUpDownResultNumber" Value="5" Margin="107,44,354,334" />
+        <xctk:IntegerUpDown Name="IntegerUpDownResultNumber" Value="5" Margin="107,44,695,334" />
         <Label x:Name="Label" Content="Liczba wyników&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
-        <xctk:IntegerUpDown x:Name="IntegerUpDownTimeout" Value="5" Margin="348,44,113,334" />
+        <xctk:IntegerUpDown x:Name="IntegerUpDownTimeout" Value="5" Margin="348,44,457,334" />
         <Label x:Name="Label1" Content="Maks. czas oczekiwania (s)&#xD;&#xA;" HorizontalAlignment="Left" Margin="194,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.462"/>
         <Label x:Name="StatusLabel" Content="" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxUnifiedQuery" HorizontalAlignment="Left" Height="23" Margin="10,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" IsEnabled="False"/>
         <Label x:Name="Label2" Content="Zapytanie po unifikacji:" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.151,-1.183"/>
-        <ListView x:Name="ListViewResults" HorizontalAlignment="Left" Height="230" Margin="10,146,0,0" VerticalAlignment="Top" Width="497">
+        <ListView x:Name="ListViewResults" HorizontalAlignment="Left" Height="230" Margin="10,146,0,0" VerticalAlignment="Top" Width="850" MouseDoubleClick="ListViewResults_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Tytuł" Width="400" DisplayMemberBinding="{Binding ArticleTitle}"/>
+                    <GridViewColumn Header="Tytuł" Width="750" DisplayMemberBinding="{Binding ArticleTitle}"/>
                     <GridViewColumn Header="Ranking" Width="100" DisplayMemberBinding="{Binding Ranking}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBox x:Name="TextBoxSynonyms" Height="97" Margin="512,44,10,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+        <Label x:Name="Label3" Content="Synonimy:" HorizontalAlignment="Left" Margin="521,6,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

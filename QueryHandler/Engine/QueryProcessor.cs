@@ -5,8 +5,6 @@ using QueryHandler.TextUnifiers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static MeSHService.Helpers.StringExtensions;
 
 namespace QueryHandler.Engine
@@ -30,6 +28,12 @@ namespace QueryHandler.Engine
                 GetSynonymBasedQueryBuilder(userQuery),
                 GetAllSynonymsQueryBuilder(userQuery)
             };
+        }
+
+        public List<string> GetSynonyms(string query)
+        {
+            List<Tuple<string, IList<string>>> termsWithSynonyms = ReplaceWithSynonyms(query);
+            return (termsWithSynonyms.Select(t => t.Item2)).SelectMany(x => x).ToList();
         }
 
         private IPubMedQueryBuilder GetOriginalQueryBuilder(string userQuery)

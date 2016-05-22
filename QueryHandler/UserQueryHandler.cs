@@ -20,6 +20,8 @@ namespace QueryHandler
 
             IList<IPubMedQueryBuilder> queries = queryEngine.GetQueriesToSend(query, resultsNumber);
 
+            var synonyms = queryEngine.GetSynonyms(query);
+
             List<UserQueryResult> result = new List<UserQueryResult>();
 
             foreach (IPubMedQueryBuilder queryToBuild in queries)
@@ -30,7 +32,7 @@ namespace QueryHandler
                 foreach (var queryRes in queryResults)
                 {
                     int ranking = RankingHelper.GetRankingForResult(queryRes, queryResults);
-                    result.Add(new UserQueryResult { ArticleTitle = queryRes.Article.Title, Ranking = ranking });
+                    result.Add(new UserQueryResult { ArticleTitle = queryRes.Article.Title, Ranking = ranking, ArticleId = queryRes.Article.PubMedId});
                 }
             }
 
@@ -40,6 +42,7 @@ namespace QueryHandler
             
             frs.UserQueryResults = result.OrderByDescending(r => r.Ranking).ToList();
             frs.ExecutionTimeMilis = stopwatch.ElapsedMilliseconds;
+            frs.Synonyms = synonyms;
 
             return frs;
         }

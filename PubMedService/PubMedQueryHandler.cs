@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using PubMed.Model.Database;
-using PubMed.Model.Search;
-using PubMed.Model.Search.Terms;
 using PubMed.Model.Summaries;
 using PubMed.Search.Search;
 using PubMed.Search.Summary;
@@ -30,7 +28,7 @@ namespace PubMedService
                     await
                         paperSummaryRetriever.RetrievePaperSummaryAsync(new SummaryRetrievalProperties(EntrezDatabase,
                             searchResult.PubMedID));
-                result.Add(new PubMedQueryResult(new PubMedArticle(summary.Title), searchResults.IndexOf(searchResult)));
+                result.Add(new PubMedQueryResult(new PubMedArticle(searchResult.PubMedID, summary.Title), searchResults.IndexOf(searchResult)));
             }
 
             return result;

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using QueryHandler;
 
 namespace PubMedBreaker
@@ -33,9 +36,16 @@ namespace PubMedBreaker
                     timeout = IntegerUpDownTimeout.Value.Value;
                 }
 
+                TextBoxSynonyms.Text = String.Empty;
+
                 FinalResultsSet results = await _uqh.GetResultsForQuery(userQuery, resultsNumber, timeout);
 
                 TextBoxUnifiedQuery.Text = results.UnifiedQuery;
+
+                foreach (var synonym in results.Synonyms)
+                {
+                    TextBoxSynonyms.Text += synonym + Environment.NewLine;
+                }
 
                 ListViewResults.ItemsSource = results.UserQueryResults;
 
@@ -49,6 +59,24 @@ namespace PubMedBreaker
             Button.IsEnabled = true;
             
             
+        }
+
+        private void ListViewResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DependencyObject obj = (DependencyObject)e.OriginalSource;
+
+            while (obj != null && obj != ListViewResults)
+            {
+                if (obj.GetType() == typeof(ListViewItem))
+                {
+                    // Do something here
+                    
+                    var id = ((obj as ListViewItem).DataContext as UserQueryResult).ArticleId;
+                    System.Diagnostics.Process.Start("http://www.ncbi.nlm.nih.gov/pubmed/" + id);
+                    break;
+                }
+                obj = VisualTreeHelper.GetParent(obj);
+            }
         }
     }
 }

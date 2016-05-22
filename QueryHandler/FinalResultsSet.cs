@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QueryHandler
 {
@@ -13,5 +10,6 @@ namespace QueryHandler
         public int SynonymsCount { get; set; }
         public int ProcesedSynonymsCount { get; set; }
         public string UnifiedQuery { get; set; }
+        public List<String> Synonyms { get; set; }
     }
 }
