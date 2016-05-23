@@ -15,7 +15,7 @@ namespace PubMedService
         public static async Task<List<PubMedQueryResult>> GetResultsForPubMedQueryAsync(
             IPubMedQueryBuilder searchBuilder)
         {
-            var result = new List<PubMedQueryResult>();
+            var foundArticles = new List<PubMedQueryResult>();
             var searchProperties = searchBuilder.BuildSearch(EntrezDatabase);
             
             IDatabaseSearchExecutor databaseSearchExecutor = new DatabaseSearchExecutor();
@@ -23,15 +23,13 @@ namespace PubMedService
 
             foreach (var searchResult in searchResults)
             {
-                IPaperSummaryRetriever paperSummaryRetriever = new PaperSummaryRetriever();
-                var summary =
-                    await
-                        paperSummaryRetriever.RetrievePaperSummaryAsync(new SummaryRetrievalProperties(EntrezDatabase,
-                            searchResult.PubMedID));
-                result.Add(new PubMedQueryResult(new PubMedArticle(searchResult.PubMedID, summary.Title), searchResults.IndexOf(searchResult)));
+                var resultArticle = new PubMedArticle(searchResult.PubMedID);
+                await resultArticle.Load(EntrezDatabase);
+                var result = new PubMedQueryResult(resultArticle, searchResults.IndexOf(searchResult));
+                foundArticles.Add(result);
             }
 
-            return result;
+            return foundArticles;
         }
     }
 }
