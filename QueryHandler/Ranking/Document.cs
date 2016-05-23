@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QueryHandler.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace QueryHandler.Ranking
     /// </summary>
     public interface IDocument
     {
-
+        int TotalTermsCount { get; }
+        int GetCountOf(ComparableTerm term);
     }
 }

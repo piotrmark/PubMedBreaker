@@ -55,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\ComparableTerm.cs" />
     <Compile Include="Engine\QueriesSetBuilder.cs" />
+    <Compile Include="Engine\Term.cs" />
     <Compile Include="Engine\TermHandler.cs" />
     <Compile Include="FinalResultsSet.cs" />
     <Compile Include="Helpers\Extensions.cs" />

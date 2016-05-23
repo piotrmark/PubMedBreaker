@@ -12,7 +12,8 @@ namespace QueryHandler.Engine
     public class TermHandler
     {
         private MeshService service;
-        private StringTransformation unifyTerm = (string source) => { return Unification.Unify(source); };
+        private StringTransformation unifyTerm;
+        private IDictionary<string, List<Term>> globalDividedQueriesDict;
 
         public TermHandler(StringTransformation unifyFunc)
         {
@@ -22,13 +23,20 @@ namespace QueryHandler.Engine
 
         public List<string> GetSynonyms(string query)
         {
-            List<Tuple<string, IList<string>>> termsWithSynonyms = ReplaceWithSynonyms(query);
-            return (termsWithSynonyms.Select(t => t.Item2)).SelectMany(x => x).ToList();
+            List<Term> termsWithSynonyms = GetDividedToTerms(query);
+            return (termsWithSynonyms.Select(t => t.Synonyms)).SelectMany(x => x).ToList();
         }
 
-        public List<Tuple<string, IList<string>>> ReplaceWithSynonyms(string termsStr)
+        public List<Term> GetDividedToTerms(string query)
         {
-            var result = new List<Tuple<string, IList<string>>>();
+            if (!globalDividedQueriesDict.ContainsKey(query))
+                globalDividedQueriesDict.Add(query, DivideToTermsWithSynonyms(query));
+            return globalDividedQueriesDict[query];
+        }
+
+        private List<Term> DivideToTermsWithSynonyms(string termsStr)
+        {
+            var result = new List<Term>();
 
             var words = termsStr.Split().ToList();
             for (int termLength = words.Count; termLength > 1; termLength--)
@@ -40,12 +48,12 @@ namespace QueryHandler.Engine
                     if (synonyms.Any())
                     {
                         if (i > 0)
-                            result = ReplaceWithSynonyms(words.JoinRange(0, i));
+                            result = DivideToTermsWithSynonyms(words.JoinRange(0, i));
 
-                        result.Add(new Tuple<string, IList<string>>(currentlyChecked, synonyms));
+                        result.Add(new Term(currentlyChecked,synonyms));
 
                         if (i + termLength < words.Count)
-                            result.AddRange(ReplaceWithSynonyms(words.JoinRange(i + termLength)));
+                            result.AddRange(DivideToTermsWithSynonyms(words.JoinRange(i + termLength)));
 
                         return result;
                     }
@@ -53,8 +61,8 @@ namespace QueryHandler.Engine
             }
 
             foreach (string word in words)
-                result.Add(new Tuple<string, IList<string>>(word, service.GetSynonyms(word)));
-
+                result.Add(new Term(word,service.GetSynonyms(word)));
+            
             return result;
         }
 
