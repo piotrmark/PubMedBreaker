@@ -13,7 +13,7 @@ namespace QueryHandler.Engine
     {
         private MeshService service;
         private StringTransformation unifyTerm;
-        private IDictionary<string, List<Term>> globalDividedQueriesDict;
+        private IDictionary<string, List<Term>> globalDividedQueriesDict = new Dictionary<string, List<Term>>();
 
         public TermHandler(StringTransformation unifyFunc)
         {

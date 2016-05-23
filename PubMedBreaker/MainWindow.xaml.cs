@@ -21,6 +21,11 @@ namespace PubMedBreaker
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             Button.IsEnabled = false;
+            TextBoxSynonyms.Text = String.Empty;
+            TextBoxUnifiedQuery.Text = String.Empty;
+            ListViewResults.ItemsSource = null;
+            StatusLabel.Content = String.Empty;
+
             try
             {
                 string userQuery = TextBoxQuery.Text;
@@ -35,8 +40,6 @@ namespace PubMedBreaker
                 {
                     timeout = IntegerUpDownTimeout.Value.Value;
                 }
-
-                TextBoxSynonyms.Text = String.Empty;
 
                 FinalResultsSet results = await _uqh.GetResultsForQuery(userQuery, resultsNumber, timeout);
 
