@@ -9,15 +9,16 @@ using static MeSHService.Helpers.StringExtensions;
 
 namespace QueryHandler.Engine
 {
-    public class TermHandler
+    public class QueryTermsHandler
     {
-        private MeshService service;
-        private StringTransformation unifyTerm;
+        public StringTransformation UnifyTerm;
+
+        private MeshService service;      
         private IDictionary<string, List<Term>> globalDividedQueriesDict = new Dictionary<string, List<Term>>();
 
-        public TermHandler(StringTransformation unifyFunc)
+        public QueryTermsHandler(StringTransformation unifyFunc)
         {
-            unifyTerm = unifyFunc;
+            UnifyTerm = unifyFunc;
             service = new MeshService(unifyFunc);
         }
 
@@ -43,7 +44,7 @@ namespace QueryHandler.Engine
             {
                 for (int i = 0; i + termLength <= words.Count; i++)
                 {
-                    string currentlyChecked = unifyTerm(words.JoinRange(i, termLength));
+                    string currentlyChecked = UnifyTerm(words.JoinRange(i, termLength));
                     IList<string> synonyms = service.GetExactSynonyms(currentlyChecked);
                     if (synonyms.Any())
                     {

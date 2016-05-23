@@ -7,12 +7,20 @@ using System.Linq;
 using QueryHandler.TextUnifiers;
 using QueryHandler.Engine;
 using PubMedService.PubMedQueryBuilder;
+using QueryHandler.Ranking;
 
 namespace QueryHandler
 {
     public class UserQueryHandler
     {
-        private TermHandler termsHandler = new TermHandler(Unification.Unify);
+        private QueryTermsHandler termsHandler;
+        private RankingBuilder rankingBuilder;
+
+        public UserQueryHandler()
+        {
+            termsHandler = new QueryTermsHandler(Unification.Unify);
+            rankingBuilder = new RankingBuilder(termsHandler);
+        }
         
         public async Task<FinalResultsSet> GetResultsForQuery(string query, int resultsNumber, int timeout)
         {
@@ -20,30 +28,23 @@ namespace QueryHandler
             var multiQueryBuilder = new QueriesSetBuilder(termsHandler, query, resultsNumber);
             IList<IPubMedQueryBuilder> queries = multiQueryBuilder.GetQueriesToSend();
 
-            var synonyms = termsHandler.GetSynonyms(query);
-
-            List<UserQueryResult> result = new List<UserQueryResult>();
+            List<PubMedQueryResult> allResults = new List<PubMedQueryResult>();
 
             foreach (IPubMedQueryBuilder queryToBuild in queries)
             {
                 List<PubMedQueryResult> queryResults =
                     await PubMedQueryHandler.GetResultsForPubMedQueryAsync(queryToBuild);
-
-                foreach (var queryRes in queryResults)
-                {
-                    int ranking = RankingHelper.GetRankingForResult(queryRes, queryResults);
-                    result.Add(new UserQueryResult { ArticleTitle = queryRes.Article.Title, Ranking = ranking, ArticleId = queryRes.Article.PubMedId});
-                }
+                allResults.AddRange(queryResults);
             }
 
             FinalResultsSet frs = new FinalResultsSet();
-
-            frs.UnifiedQuery = Unification.Unify(query);
-            
-            frs.UserQueryResults = result.OrderByDescending(r => r.Ranking).ToList();
             frs.ExecutionTimeMilis = stopwatch.ElapsedMilliseconds;
-            frs.Synonyms = synonyms;
+            frs.UnifiedQuery = Unification.Unify(query);
+            frs.Synonyms = termsHandler.GetSynonyms(query);
 
+            IList<PubMedArticleResult> results = rankingBuilder.Build(query, allResults);
+            frs.UserQueryResults = results.OrderByDescending(r => r.RankingVal).ToList();
+            
             return frs;
         }
     }

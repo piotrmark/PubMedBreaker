@@ -11,12 +11,12 @@ namespace QueryHandler.Engine
 {
     public class QueriesSetBuilder
     {
-        private TermHandler termsHandler;
+        private QueryTermsHandler termsHandler;
         private string userQuery;
         private int maxResultsCount = 10;
 
 
-        public QueriesSetBuilder(TermHandler termsHandler, string userQuery, int maxResultsCount)
+        public QueriesSetBuilder(QueryTermsHandler termsHandler, string userQuery, int maxResultsCount)
         {
             this.termsHandler = termsHandler;
             this.userQuery = userQuery;

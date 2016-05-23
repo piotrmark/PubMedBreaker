@@ -19,8 +19,8 @@
         <ListView x:Name="ListViewResults" HorizontalAlignment="Left" Height="230" Margin="10,146,0,0" VerticalAlignment="Top" Width="850" MouseDoubleClick="ListViewResults_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Tytuł" Width="750" DisplayMemberBinding="{Binding ArticleTitle}"/>
-                    <GridViewColumn Header="Ranking" Width="100" DisplayMemberBinding="{Binding Ranking}"/>
+                    <GridViewColumn Header="Tytuł" Width="750" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="Ranking" Width="100" DisplayMemberBinding="{Binding RankingVal}"/>
                 </GridView>
             </ListView.View>
         </ListView>

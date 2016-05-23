@@ -5,21 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using static MeSHService.Helpers.StringExtensions;
 
-namespace QueryHandler.Engine
+namespace QueryHandler.Ranking
 {
-    public class ComparableTerm : Term
+    public class ComparableTerm 
     {
         private List<string> allSynonymsUnified;
 
-        public ComparableTerm(Term standardTerm, StringTransformation unifyingFunc) 
-            : base(standardTerm.TextValue, standardTerm.Synonyms)
+        public ComparableTerm(Engine.Term standardTerm, StringTransformation unifyingFunc) 
         {
             allSynonymsUnified = new List<string>
             {
-                unifyingFunc(TextValue)
+                unifyingFunc(standardTerm.TextValue)
             };
 
-            allSynonymsUnified.AddRange(Synonyms.Select(s => unifyingFunc(s)).ToList());
+            allSynonymsUnified.AddRange(standardTerm.Synonyms.Select(s => unifyingFunc(s)).ToList());
         }
 
         public override bool Equals(Object obj)
@@ -27,9 +26,7 @@ namespace QueryHandler.Engine
             ComparableTerm other = obj as ComparableTerm;
 
             if (other != null)
-            {
                 return this.allSynonymsUnified.Any(s => other.allSynonymsUnified.Any(s2 => s2.Equals(s)));
-            }
 
             return base.Equals(obj);
         }

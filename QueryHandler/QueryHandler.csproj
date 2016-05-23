@@ -55,14 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\ComparableTerm.cs" />
+    <Compile Include="Ranking\ComparableTerm.cs" />
     <Compile Include="Engine\QueriesSetBuilder.cs" />
     <Compile Include="Engine\Term.cs" />
-    <Compile Include="Engine\TermHandler.cs" />
+    <Compile Include="Engine\QueryTermsHandler.cs" />
     <Compile Include="FinalResultsSet.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="RankingHelper.cs" />
     <Compile Include="Ranking\Document.cs" />
+    <Compile Include="PubMedArticleResult.cs" />
+    <Compile Include="Ranking\RankedTerm.cs" />
+    <Compile Include="Ranking\RankingBuilder.cs" />
     <Compile Include="TextUnifiers\Normalization.cs" />
     <Compile Include="TextUnifiers\Stemmers\SnowballStemmer.cs" />
     <Compile Include="TextUnifiers\Stemmers\StemmerHelper.cs" />
@@ -70,7 +73,6 @@
     <Compile Include="TextUnifiers\StopWords.cs" />
     <Compile Include="TextUnifiers\Unification.cs" />
     <Compile Include="UserQueryHandler.cs" />
-    <Compile Include="UserQueryResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

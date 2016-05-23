@@ -73,8 +73,7 @@ namespace PubMedBreaker
                 if (obj.GetType() == typeof(ListViewItem))
                 {
                     // Do something here
-                    
-                    var id = ((obj as ListViewItem).DataContext as UserQueryResult).ArticleId;
+                    var id = ((obj as ListViewItem).DataContext as PubMedArticleResult).PubMedId;
                     System.Diagnostics.Process.Start("http://www.ncbi.nlm.nih.gov/pubmed/" + id);
                     break;
                 }
