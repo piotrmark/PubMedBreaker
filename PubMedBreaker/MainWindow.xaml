@@ -56,11 +56,12 @@
                                 Margin="5,5,5,0"
                                 Value="5"
                                 Height="20"
+                                
                                 />
             <Label x:Name="Label"
                    Grid.Column="0"
                    Grid.Row="0"
-                   Content="Liczba wyników"
+                   Content="Liczba wyników na zapytanie:"
                    HorizontalAlignment="Left"
                    Margin="0,5,5,0"
                    VerticalAlignment="Top"/>
@@ -73,7 +74,7 @@
             <Label x:Name="Label2"
                    Content="Zapytanie po unifikacji:"
                    Grid.Row="0"
-                   Margin="0,5,5,0"
+                   Margin="3,5,5,0"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Top"/>
             <TextBox x:Name="TextBoxUnifiedQuery"
