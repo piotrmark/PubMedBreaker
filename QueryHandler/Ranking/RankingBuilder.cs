@@ -46,8 +46,10 @@ namespace QueryHandler.Ranking
                 if (result.Any(t => t.Term.Equals(term)))
                     continue;
 
-                double idf = ComputeInverseDocumentFrequency(term,
-                    matchedArticlesRanking.Select(art => art.Document).ToList());
+                var docsList = matchedArticlesRanking.Select(art => art.Document).ToList();
+                docsList.Add(query);
+                
+                double idf = ComputeInverseDocumentFrequency(term, docsList);
 
                 result.Add(new RankedTerm { Term = term, InverseDocumentFrequency = idf });
             }
