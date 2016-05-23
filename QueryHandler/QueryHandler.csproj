@@ -55,10 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\QueryProcessor.cs" />
+    <Compile Include="Engine\QueriesSetBuilder.cs" />
+    <Compile Include="Engine\TermHandler.cs" />
     <Compile Include="FinalResultsSet.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="RankingHelper.cs" />
+    <Compile Include="Ranking\Document.cs" />
     <Compile Include="TextUnifiers\Normalization.cs" />
     <Compile Include="TextUnifiers\Stemmers\SnowballStemmer.cs" />
     <Compile Include="TextUnifiers\Stemmers\StemmerHelper.cs" />
@@ -88,6 +90,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -12,15 +12,15 @@ namespace QueryHandler
 {
     public class UserQueryHandler
     {
-        private QueryProcessor queryEngine = new QueryProcessor();
+        private TermHandler termsHandler = new TermHandler(Unification.Unify);
         
         public async Task<FinalResultsSet> GetResultsForQuery(string query, int resultsNumber, int timeout)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
+            var multiQueryBuilder = new QueriesSetBuilder(termsHandler, query, resultsNumber);
+            IList<IPubMedQueryBuilder> queries = multiQueryBuilder.GetQueriesToSend();
 
-            IList<IPubMedQueryBuilder> queries = queryEngine.GetQueriesToSend(query, resultsNumber);
-
-            var synonyms = queryEngine.GetSynonyms(query);
+            var synonyms = termsHandler.GetSynonyms(query);
 
             List<UserQueryResult> result = new List<UserQueryResult>();
 
