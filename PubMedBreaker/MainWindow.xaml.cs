@@ -34,14 +34,8 @@ namespace PubMedBreaker
                 {
                     resultsNumber = IntegerUpDownResultNumber.Value.Value;
                 }
-
-                int timeout = 0;
-                if (IntegerUpDownTimeout.Value != null)
-                {
-                    timeout = IntegerUpDownTimeout.Value.Value;
-                }
-
-                FinalResultsSet results = await _uqh.GetResultsForQuery(userQuery, resultsNumber, timeout);
+                
+                FinalResultsSet results = await _uqh.GetResultsForQuery(userQuery, resultsNumber);
 
                 TextBoxUnifiedQuery.Text = results.UnifiedQuery;
 
@@ -53,7 +47,7 @@ namespace PubMedBreaker
                 ListViewResults.ItemsSource = results.UserQueryResults;
 
                 StatusLabel.Content =
-                    $"Wykonano zapytania w: {results.ExecutionTimeMilis} ms, przetworzono {results.ProcesedSynonymsCount} z {results.SynonymsCount} synonimów";
+                    $"Wykonano zapytania w: {results.ExecutionTimeMilis} ms";
             }
             catch (Exception exc)
             {

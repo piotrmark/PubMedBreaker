@@ -22,7 +22,7 @@ namespace QueryHandler
             rankingBuilder = new RankingBuilder(termsHandler);
         }
         
-        public async Task<FinalResultsSet> GetResultsForQuery(string query, int resultsNumber, int timeout)
+        public async Task<FinalResultsSet> GetResultsForQuery(string query, int resultsNumber)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             var multiQueryBuilder = new QueriesSetBuilder(termsHandler, query, resultsNumber);

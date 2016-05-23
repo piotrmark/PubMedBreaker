@@ -5,18 +5,115 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="446.581" Width="877.868">
-    <Grid>
-        <TextBox x:Name="TextBoxQuery" HorizontalAlignment="Left" Height="22" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497"/>
-        <Button x:Name="Button" Content="Szukaj" HorizontalAlignment="Left" Margin="432,44,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <xctk:IntegerUpDown Name="IntegerUpDownResultNumber" Value="5" Margin="107,44,695,334" />
-        <Label x:Name="Label" Content="Liczba wyników&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
-        <xctk:IntegerUpDown x:Name="IntegerUpDownTimeout" Value="5" Margin="348,44,457,334" />
-        <Label x:Name="Label1" Content="Maks. czas oczekiwania (s)&#xD;&#xA;" HorizontalAlignment="Left" Margin="194,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.462"/>
-        <Label x:Name="StatusLabel" Content="" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxUnifiedQuery" HorizontalAlignment="Left" Height="23" Margin="10,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" IsEnabled="False"/>
-        <Label x:Name="Label2" Content="Zapytanie po unifikacji:" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.151,-1.183"/>
-        <ListView x:Name="ListViewResults" HorizontalAlignment="Left" Height="230" Margin="10,146,0,0" VerticalAlignment="Top" Width="850" MouseDoubleClick="ListViewResults_MouseDoubleClick">
+        Title="Wyszukiwarka artykułów medycznych z bazy PubMed" SizeToContent="WidthAndHeight">
+    <Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="TextBoxQuery"
+                     Grid.Column="0"
+                     Height="22"
+                     Margin="5,5,5,0"
+                     TextWrapping="Wrap"/>
+
+            <Button x:Name="Button"
+                    Content="Szukaj"
+                    Grid.Column="1"
+                    Width="75" 
+                    Margin="5,5,5,0"
+                    Click="button_Click"/>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <xctk:IntegerUpDown Grid.Column="0"
+                                Grid.Row="1"
+                                Name="IntegerUpDownResultNumber"
+                                Margin="5,5,5,0"
+                                Value="5"
+                                Height="20"
+                                />
+            <Label x:Name="Label"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Content="Liczba wyników"
+                   HorizontalAlignment="Left"
+                   Margin="0,5,5,0"
+                   VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label2"
+                   Content="Zapytanie po unifikacji:"
+                   Grid.Row="0"
+                   Margin="0,5,5,0"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"/>
+            <TextBox x:Name="TextBoxUnifiedQuery"
+                     HorizontalAlignment="Stretch"
+                     Grid.Row="1"
+                     Margin="5,5,5,0"
+                     Height="23" 
+                     TextWrapping="Wrap"
+                     IsEnabled="False"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label3"
+                   Grid.Row="0"
+                   Content="Synonimy:"
+                   Margin="0,5,5,0"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"/>
+
+            <TextBox x:Name="TextBoxSynonyms"
+                     Grid.Row="1"
+                     Margin="5,5,5,0"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Top"
+                     IsReadOnly="True"
+                     MaxHeight="130"
+                     VerticalScrollBarVisibility="Auto"/>
+        </Grid>
+        
+        <ListView Grid.Row="4"
+                  x:Name="ListViewResults"
+                  Margin="5,5,5,0"
+                  HorizontalAlignment="Stretch"
+                  Height="230" 
+                  VerticalAlignment="Top"
+                  MouseDoubleClick="ListViewResults_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Tytuł" Width="750" DisplayMemberBinding="{Binding Title}"/>
@@ -24,7 +121,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="TextBoxSynonyms" Height="97" Margin="512,44,10,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
-        <Label x:Name="Label3" Content="Synonimy:" HorizontalAlignment="Left" Margin="521,6,0,0" VerticalAlignment="Top"/>
+
+        
+        <Label x:Name="StatusLabel"
+               Grid.Row="5"
+               Margin="5,5,5,0"
+               Content=""
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"/>
     </Grid>
 </Window>
