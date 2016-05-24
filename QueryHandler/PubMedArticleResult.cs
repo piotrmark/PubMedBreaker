@@ -13,12 +13,12 @@ namespace QueryHandler
     public class PubMedArticleResult
     {
         public double RankingVal { get; set; }
-
         public string Title { get; private set; }
         public string Abstract { get; private set; }
         public string PubMedId { get; private set; }
         public Document Document { get; private set;}
         public int PubMedPosition { get; private set; }
+        public double CosineMetric { get; set; }
 
         public PubMedArticleResult(PubMedQueryResult matchedArticle, QueryTermsHandler termsHandler)
         {

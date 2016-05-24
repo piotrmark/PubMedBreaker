@@ -33,7 +33,24 @@ namespace QueryHandler.Ranking
             queryTermsRankedWithIDF = ComputeInverseDocumentFrequencies();
 
             foreach (PubMedArticleResult article in matchedArticlesRanking)
-                article.RankingVal = Math.Round(Match(query, article) + (resultsCount - article.PubMedPosition) * 0.01, 2);
+                article.CosineMetric = Match(query, article);
+
+            var minMetric = matchedArticlesRanking.Min(x => x.CosineMetric);
+            var maxMetric = matchedArticlesRanking.Max(x => x.CosineMetric);
+
+            foreach (var article in matchedArticlesRanking)
+            {
+                article.RankingVal = NormalizeRanking(article.CosineMetric, minMetric, maxMetric) +
+                                     (resultsCount - article.PubMedPosition)*0.01;
+            }
+
+            minMetric = matchedArticlesRanking.Min(x => x.RankingVal);
+            maxMetric = matchedArticlesRanking.Max(x => x.RankingVal);
+
+            foreach (var article in matchedArticlesRanking)
+            {
+                article.RankingVal = Math.Round(NormalizeRanking(article.RankingVal, minMetric, maxMetric), 6);
+            }
 
             return matchedArticlesRanking;
         }
@@ -80,6 +97,11 @@ namespace QueryHandler.Ranking
                         Math.Pow((query.GetTFxIDF(t) - article.Document.GetTFxIDF(t)), 2))
                 .Sum());
             return scalarRatio / distanceRatio;
+        }
+
+        private double NormalizeRanking(double rankVal, double minVal, double maxVal)
+        {
+            return (rankVal - minVal)/(maxVal - minVal);
         }
     }
 }
