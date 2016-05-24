@@ -20,14 +20,14 @@ namespace QueryHandler.Ranking
             this.termsHandler = termsHandler;
         }
 
-        public IList<PubMedArticleResult> Build(string queryStr, IList<PubMedQueryResult> matchedArticles,
+        public IList<PubMedArticleResult> Build(string queryStr, IDictionary<PubMedQueryResult, int> matchedArticles,
             int resultsCount)
         {
             query = new Document(queryStr, termsHandler);
             matchedArticlesRanking = matchedArticles
                 .Select(
                     art =>
-                        new PubMedArticleResult(art, termsHandler))
+                        new PubMedArticleResult(art.Key, art.Value, termsHandler))
                 .ToList();
 
             queryTermsRankedWithIDF = ComputeInverseDocumentFrequencies();
@@ -49,8 +49,15 @@ namespace QueryHandler.Ranking
 
             foreach (var article in matchedArticlesRanking)
             {
-                article.RankingVal = Math.Round(NormalizeRanking(article.RankingVal, minMetric, maxMetric), 6);
+                article.RankingVal = NormalizeRanking(article.RankingVal, minMetric, maxMetric);
+                if (article.FoundCount == 2)
+                    article.RankingVal += 0.2 * Math.Min(article.RankingVal, 1 - article.RankingVal);
+                else if(article.FoundCount == 3)
+                    article.RankingVal += 0.3 * Math.Min(article.RankingVal, 1 - article.RankingVal);
             }
+
+
+
 
             return matchedArticlesRanking;
         }

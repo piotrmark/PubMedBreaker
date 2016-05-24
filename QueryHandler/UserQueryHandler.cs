@@ -42,7 +42,11 @@ namespace QueryHandler
             frs.UnifiedQuery = Unification.Unify(query);
             frs.Synonyms = termsHandler.GetSynonyms(query);
 
-            IList<PubMedArticleResult> results = rankingBuilder.Build(query, allResults, resultsNumber);
+            IDictionary<PubMedQueryResult, int> articlesWithCount = allResults
+                .GroupBy(x => x.Article.PubMedId)
+                .ToDictionary(art => art.First(), art => art.Count());
+
+            IList<PubMedArticleResult> results = rankingBuilder.Build(query, articlesWithCount, resultsNumber);
             frs.UserQueryResults =
                 results.OrderByDescending(r => r.RankingVal).GroupBy(x => x.PubMedId).Select(y => y.First()).ToList();
             

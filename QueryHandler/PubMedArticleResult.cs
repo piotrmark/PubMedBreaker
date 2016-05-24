@@ -18,14 +18,16 @@ namespace QueryHandler
         public string PubMedId { get; private set; }
         public Document Document { get; private set;}
         public int PubMedPosition { get; private set; }
+        public double FoundCount { get; set; }
         public double CosineMetric { get; set; }
 
-        public PubMedArticleResult(PubMedQueryResult matchedArticle, QueryTermsHandler termsHandler)
+        public PubMedArticleResult(PubMedQueryResult matchedArticle, int foundCount, QueryTermsHandler termsHandler)
         {
             Title = matchedArticle.Article.Title;
             Abstract = matchedArticle.Article.Abstract;
             PubMedId = matchedArticle.Article.PubMedId;
             PubMedPosition = matchedArticle.PubMedIndex;
+            FoundCount = foundCount;
             Document = new Document(matchedArticle.Article.Title + matchedArticle.Article.Abstract, termsHandler);
         }
     }
