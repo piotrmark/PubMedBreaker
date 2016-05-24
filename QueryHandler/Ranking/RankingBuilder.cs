@@ -20,7 +20,8 @@ namespace QueryHandler.Ranking
             this.termsHandler = termsHandler;
         }
 
-        public IList<PubMedArticleResult> Build(string queryStr, IList<PubMedQueryResult> matchedArticles, int resultsCount)
+        public IList<PubMedArticleResult> Build(string queryStr, IList<PubMedQueryResult> matchedArticles,
+            int resultsCount)
         {
             query = new Document(queryStr, termsHandler);
             matchedArticlesRanking = matchedArticles

@@ -7,28 +7,31 @@ using static MeSHService.Helpers.StringExtensions;
 
 namespace QueryHandler.Ranking
 {
-    public class ComparableTerm 
+    public class ComparableTerm
     {
-        private List<string> allSynonymsUnified;
 
-        public ComparableTerm(Engine.Term standardTerm, StringTransformation unifyingFunc) 
+        public ComparableTerm(Engine.Term standardTerm, StringTransformation unifyingFunc)
         {
-            allSynonymsUnified = new List<string>
+            AllSynonymsUnified = new List<string>
             {
                 unifyingFunc(standardTerm.TextValue)
             };
 
-            allSynonymsUnified.AddRange(standardTerm.Synonyms.Select(s => unifyingFunc(s)).ToList());
+            AllSynonymsUnified.AddRange(standardTerm.Synonyms.Select(s => unifyingFunc(s)).ToList());
         }
+
+
+        public List<string> AllSynonymsUnified { get; private set; }
 
         public override bool Equals(Object obj)
         {
             ComparableTerm other = obj as ComparableTerm;
 
             if (other != null)
-                return this.allSynonymsUnified.Any(s => other.allSynonymsUnified.Any(s2 => s2.Equals(s)));
+                return this.AllSynonymsUnified.Any(s => other.AllSynonymsUnified.Any(s2 => s2.Equals(s)));
 
             return base.Equals(obj);
         }
+
     }
 }

@@ -38,13 +38,14 @@ namespace QueryHandler.Engine
         private List<Term> DivideToTermsWithSynonyms(string termsStr)
         {
             var result = new List<Term>();
-
+            termsStr = UnifyTerm(termsStr);
             var words = termsStr.Split().ToList();
-            for (int termLength = words.Count; termLength > 1; termLength--)
+            int longestTermToMatchLength = words.Count > 20 ? 20 : words.Count;
+            for (int termLength = longestTermToMatchLength; termLength > 1; termLength--)
             {
                 for (int i = 0; i + termLength <= words.Count; i++)
                 {
-                    string currentlyChecked = UnifyTerm(words.JoinRange(i, termLength));
+                    string currentlyChecked = words.JoinRange(i, termLength);
                     IList<string> synonyms = service.GetExactSynonyms(currentlyChecked);
                     if (synonyms.Any())
                     {
@@ -62,7 +63,11 @@ namespace QueryHandler.Engine
             }
 
             foreach (string word in words)
-                result.Add(new Term(word,service.GetSynonyms(word)));
+            {
+                string unified = UnifyTerm(word);
+                if(!string.IsNullOrWhiteSpace(unified))
+                    result.Add(new Term(unified, service.GetSynonyms(unified)));
+            }
             
             return result;
         }

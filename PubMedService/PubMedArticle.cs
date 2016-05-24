@@ -15,27 +15,11 @@ namespace PubMedService
         public string Abstract { get; private set; }
         public string PubMedId { get; private set; }
 
-        public PubMedArticle(string id)
+        public PubMedArticle(string id, string title, string abstractTxt)
         {
             PubMedId = id;
-        }
-        
-        public async Task Load(EntrezDatabase database)
-        {
-            IPaperSummaryRetriever summaryRetriever = new PaperSummaryRetriever();
-            var summaryRetProps = new SummaryRetrievalProperties(database, PubMedId);
-
-            Summary summary =
-                   await
-                       summaryRetriever.RetrievePaperSummaryAsync(summaryRetProps);
-            Title = summary.Title;
-
-            IPaperAbstractRetriever abstractRetriever = new PaperAbstractRetriever();
-            var abstractRetProps = new AbstractRetrievalProperties(database, PubMedId);
-
-            string Abstract =
-                   await
-                       abstractRetriever.GetAbstractOfPaperAsync(abstractRetProps);
+            Title = title;
+            Abstract = abstractTxt;
         }
     }
 }

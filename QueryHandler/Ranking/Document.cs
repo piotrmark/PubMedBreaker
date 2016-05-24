@@ -21,6 +21,22 @@ namespace QueryHandler.Ranking
 
         public IList<ComparableTerm> Terms { get; private set; }
 
+        public string UnifiedForm
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach(var term in Terms)
+                {
+                    sb.AppendFormat("Term {0}: {1}\n", Terms.IndexOf(term) + 1,
+                        term.AllSynonymsUnified.Aggregate((i, j) => i + " | " + j));
+                    sb.AppendLine("---");
+                }
+
+                return sb.ToString();
+            }
+        }
+
         public int TotalTermsCount
         {
             get { return Terms.Count(); }

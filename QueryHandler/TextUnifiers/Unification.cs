@@ -7,7 +7,8 @@ namespace QueryHandler.TextUnifiers
         {
             string normalized = Normalization.Normalize(text);
             string cleaned = StopWords.Clean(normalized);
-            return Stemming.Stem(cleaned);
+            string stemmed = Stemming.Stem(cleaned);
+            return stemmed.Trim();
         }
     }
 }

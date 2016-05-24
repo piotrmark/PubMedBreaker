@@ -115,6 +115,15 @@
                   Height="230" 
                   VerticalAlignment="Top"
                   MouseDoubleClick="ListViewResults_MouseDoubleClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <TextBlock Text="{Binding Path=Document.UnifiedForm}" MaxWidth="500"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Tytuł" Width="750" DisplayMemberBinding="{Binding Title}"/>

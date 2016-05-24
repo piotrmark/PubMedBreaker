@@ -23,8 +23,7 @@ namespace PubMedService
 
             foreach (var searchResult in searchResults)
             {
-                var resultArticle = new PubMedArticle(searchResult.PubMedID);
-                await resultArticle.Load(EntrezDatabase);
+                var resultArticle = await PubMedArticlesCache.Get(searchResult.PubMedID, EntrezDatabase);
                 var result = new PubMedQueryResult(resultArticle, searchResults.IndexOf(searchResult));
                 foundArticles.Add(result);
             }
