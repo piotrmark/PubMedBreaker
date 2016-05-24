@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using QueryHandler;
+using System.Threading.Tasks;
 
 namespace PubMedBreaker
 {
@@ -20,6 +21,38 @@ namespace PubMedBreaker
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
+            await ExecuteQuery();
+        }
+        
+        private void ListViewResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DependencyObject obj = (DependencyObject)e.OriginalSource;
+
+            while (obj != null && obj != ListViewResults)
+            {
+                if (obj.GetType() == typeof(ListViewItem))
+                {
+                    // Do something here
+                    var id = ((obj as ListViewItem).DataContext as PubMedArticleResult).PubMedId;
+                    System.Diagnostics.Process.Start("http://www.ncbi.nlm.nih.gov/pubmed/" + id);
+                    break;
+                }
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+        }
+
+        private async void TextBoxQuery_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                // your event handler here
+                e.Handled = true;
+                await ExecuteQuery();
+            }
+        }
+
+        private async Task ExecuteQuery()
+        {
             Button.IsEnabled = false;
             TextBoxSynonyms.Text = String.Empty;
             TextBoxUnifiedQuery.Text = String.Empty;
@@ -34,7 +67,7 @@ namespace PubMedBreaker
                 {
                     resultsNumber = IntegerUpDownResultNumber.Value.Value;
                 }
-                
+
                 FinalResultsSet results = await _uqh.GetResultsForQuery(userQuery, resultsNumber);
 
                 TextBoxUnifiedQuery.Text = results.UnifiedQuery;
@@ -54,25 +87,7 @@ namespace PubMedBreaker
                 StatusLabel.Content = exc.Message;
             }
             Button.IsEnabled = true;
-            
-            
         }
-
-        private void ListViewResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            DependencyObject obj = (DependencyObject)e.OriginalSource;
-
-            while (obj != null && obj != ListViewResults)
-            {
-                if (obj.GetType() == typeof(ListViewItem))
-                {
-                    // Do something here
-                    var id = ((obj as ListViewItem).DataContext as PubMedArticleResult).PubMedId;
-                    System.Diagnostics.Process.Start("http://www.ncbi.nlm.nih.gov/pubmed/" + id);
-                    break;
-                }
-                obj = VisualTreeHelper.GetParent(obj);
-            }
-        }
+    
     }
 }
