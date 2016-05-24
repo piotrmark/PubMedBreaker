@@ -33,7 +33,7 @@ namespace QueryHandler.Ranking
             queryTermsRankedWithIDF = ComputeInverseDocumentFrequencies();
 
             foreach (PubMedArticleResult article in matchedArticlesRanking)
-                article.RankingVal = Math.Round(Match(query, article) + (resultsCount - article.PubMedPosition) * 0.01, 2);
+                article.RankingVal = Math.Round(Match(query, article) + (resultsCount - article.PubMedPosition) * 0.01, 6);
 
             return matchedArticlesRanking;
         }
@@ -51,6 +51,8 @@ namespace QueryHandler.Ranking
                 docsList.Add(query);
                 
                 double idf = ComputeInverseDocumentFrequency(term, docsList);
+                if (idf == 0)
+                    idf = 0.0001;
 
                 result.Add(new RankedTerm { Term = term, InverseDocumentFrequency = idf });
             }
