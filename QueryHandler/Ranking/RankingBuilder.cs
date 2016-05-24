@@ -55,10 +55,7 @@ namespace QueryHandler.Ranking
                 else if(article.FoundCount == 3)
                     article.RankingVal += 0.3 * Math.Min(article.RankingVal, 1 - article.RankingVal);
             }
-
-
-
-
+            
             return matchedArticlesRanking;
         }
 
