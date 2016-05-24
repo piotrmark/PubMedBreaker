@@ -68,6 +68,8 @@ namespace QueryHandler.Ranking
                 docsList.Add(query);
                 
                 double idf = ComputeInverseDocumentFrequency(term, docsList);
+                if (idf == 0)
+                    idf = 0.0001;
 
                 result.Add(new RankedTerm { Term = term, InverseDocumentFrequency = idf });
             }
